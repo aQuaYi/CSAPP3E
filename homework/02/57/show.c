@@ -15,44 +15,31 @@ void show_bytes(byte_pointer start, size_t len)
     printf("\n");
 }
 
-void show_int(int x)
+void show_short(short x)
 {
-    show_bytes((byte_pointer)&x, sizeof(int)); //line:data:show_bytes_amp1
+    show_bytes((byte_pointer)&x, sizeof(short)); //line:data:show_bytes_amp1
 }
 
-void show_float(float x)
+void show_long(long x)
 {
-    show_bytes((byte_pointer)&x, sizeof(float)); //line:data:show_bytes_amp2
+    show_bytes((byte_pointer)&x, sizeof(long)); //line:data:show_bytes_amp2
 }
 
 void show_double(double x)
 {
-    show_bytes((byte_pointer)&x, sizeof(double)); //line:data:show_bytes_amp3
+    show_bytes((byte_pointer)&x, sizeof(double));
 }
-/* $end show-bytes */
-
-/* $begin test-show-bytes */
-void test_show_bytes(int val)
-{
-    int ival = val;
-    float fval = (float)ival;
-    int pval = (double)ival;
-    show_int(ival);
-    show_float(fval);
-    show_double(pval);
-}
-/* $end test-show-bytes */
 
 int main(int argc, char *argv[])
 {
-    int val = 0x12345678;
+    short val = 0x1234;
 
     printf("show %d == 0x%x\n", val, val);
-    printf("int     : ");
-    show_int(val);
+    printf("short   : ");
+    show_short(val);
 
-    printf("float   : ");
-    show_float(val);
+    printf("long    : ");
+    show_long(val);
 
     printf("double  : ");
     show_double(val);
