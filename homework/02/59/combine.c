@@ -2,9 +2,7 @@
 
 int combine(int x, int y)
 {
-    x = x & 0xff;
-    y = y & (-1 << 8);
-    return x + y;
+    return (x & 0xff) | (y & ~0xff);
 }
 
 void main()
