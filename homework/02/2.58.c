@@ -2,9 +2,9 @@
 
 int is_little_endian()
 {
-    int x = 0xff;
+    int x = 1;
     char *p = (char *)&x;
-    return p[1] == 0;
+    return p[0] == 1;
 }
 
 int main(int argc, char const *argv[])
