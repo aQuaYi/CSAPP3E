@@ -8,6 +8,8 @@ unsigned srl(unsigned x, int k)
 
     int w = sizeof(int) << 3;
     // 1 << k 实际上是 1 << (k mod w)
+    // 把 -1 << (w - k - 1) << 1 写成 -1 << (w-k) 的话，会导致当 k == 0 的时候，
+    // -1 << w 不会发生左移
     unsigned mask = ~(-1 << (w - k - 1) << 1);
 
     return xsra & mask;
@@ -22,6 +24,12 @@ int sra(int x, int k)
     int mask = -1 << (w - k - 1) << 1;
 
     int neg_sign = 1 << (w - 1);
+    // x & neg_sign == neg_sign 的话
+    // 说明 x 是一个负数，那么 !(x & neg_sign) == 0
+    // !(x & neg_sign) - 1 == -1 == 0xFF FF FF FF
+    // mask & !(x & neg_sign) - 1 会保留高位为 1
+    // 否则，x & neg_sign == 0 的话
+    // 同理也可知， mask & !(x & neg_sign) - 1 不会保留高位为 1
     mask &= !(x & neg_sign) - 1;
 
     return xsrl | mask;
