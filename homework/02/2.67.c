@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <limits.h>
+#include <assert.h>
 
 int int_size_is_32()
 {
@@ -19,6 +19,10 @@ int int_size_is_32_for_16_bit()
 int main()
 {
     printf("This system int size is 32 : %d\n", int_size_is_32());
+    assert(int_size_is_32());
+
     printf("This system int size for 16 bit is 32 : %d\n", int_size_is_32_for_16_bit());
+    assert(int_size_is_32_for_16_bit());
+
     return 0;
 }
