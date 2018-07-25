@@ -4,6 +4,7 @@
 int int_size_is_32()
 {
     int set_msb = 1 << 31;
+    // beyond_msb 没有办法一次左移 32 位，需要分两次进行
     int beyond_msb = set_msb << 1;
     return set_msb && !beyond_msb;
 }
