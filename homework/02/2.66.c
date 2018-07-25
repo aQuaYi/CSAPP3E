@@ -16,7 +16,7 @@ int leftmost_one(unsigned x)
     /** 若原先 x = 0B00101000111001010111100010110011
      *  现在则 x = 0B00111111111111111111111111111111
      */
-    return (x >> 1) + 1;
+    return (x >> 1) + (x & 1);
 }
 
 int main(int argc, char const *argv[])
@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
     unsigned y = 1;
     for (unsigned i = 0; i < 32; i++)
     {
-        printf("leftmost_one(0x%.8X) = 0x%.8X\n", y, leftmost_one(y));
+        printf("leftmost_one(0x%X) = 0x%X\n", y, leftmost_one(y));
         assert(leftmost_one(y) == y);
         y <<= 1;
     }
@@ -39,6 +39,10 @@ int main(int argc, char const *argv[])
     x = 0x6600;
     printf("leftmost_one(0x%.8X) = 0x%.8X\n", x, leftmost_one(x));
     assert(leftmost_one(x) == 0x4000);
+
+    x = 0x0;
+    printf("leftmost_one(0x%.8X) = 0x%.8X\n", x, leftmost_one(x));
+    assert(leftmost_one(x) == 0);
 
     return 0;
 }
