@@ -1,10 +1,9 @@
-/*
- * copy-int.c
- */
+// 本题代码来源 https : //github.com/DreamAndDead/CSAPP-3e-Solutions/blob/master/chapter2/code/copy-int.c
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+
 void copy_int(int val, void *buf, int maxbytes)
 {
     if (maxbytes >= (int)sizeof(val))
