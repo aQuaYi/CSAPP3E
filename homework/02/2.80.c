@@ -14,7 +14,7 @@ int threefourths(int x)
     int has_remainder = x & 3;
     is_pos &&has_remainder && (fourth++);
 
-    // 负数右移 2 位自带此效果
+    // 负数右移 2 位自带 -- 效果
 
     return x - fourth;
 }
