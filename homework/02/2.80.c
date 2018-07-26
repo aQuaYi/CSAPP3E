@@ -5,12 +5,13 @@
 int threefourths(int x)
 {
 
-    int is_pos = -x & INT_MIN;
-    int has_remainder = x & 3;
-    int fourth = x >> 2;
     // 为了保证 threefourths = x - fourth 向零舍入
     // fourth 必须与 向零舍入 相反
-    // 所以， 正数不能整除 4 的时候， fourth++
+    int fourth = x >> 2;
+
+    // 正数不能整除 4 的时候， fourth++
+    int is_pos = -x & INT_MIN;
+    int has_remainder = x & 3;
     is_pos &&has_remainder && (fourth++);
 
     // 负数右移 2 位自带此效果
