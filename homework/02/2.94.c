@@ -12,7 +12,7 @@ float_bits float_twice(float_bits f)
     unsigned exp = f >> 23 & 0xFF;
     unsigned frac = f & 0x7FFFFF;
 
-    int is_NaN = exp == 0xFF && frac != 0;
+    int is_NaN = (exp == 0xFF && frac != 0);
 
     if (is_NaN)
     {

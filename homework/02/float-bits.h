@@ -10,3 +10,8 @@ float fb2f(float_bits x)
 {
     return *(float *)&x;
 }
+
+float_bits f2fd(float f)
+{
+    return *(float_bits *)&f;
+}
