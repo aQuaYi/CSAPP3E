@@ -4,7 +4,7 @@
 #include <limits.h>
 #include "float-bits.h"
 
-/* Compute -f. If f is NaN, then return f. */
+/* Compute 0.5*f. If f is NaN, then return f. */
 float_bits float_half(float_bits f)
 {
     /* Decompose bit representation into parts */
