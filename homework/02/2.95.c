@@ -27,13 +27,13 @@ float_bits float_half(float_bits f)
    * 10 => 1 just >>1
    * 11 => 1 + 1 (round to even) just >>1 and plus 1
    */
-    int even_end = ((frac & 0x3) == 0x3);
+    int round_to_even = ((frac & 0x3) == 0x3);
 
     if (exp == 0)
     {
         /* Denormalized */
         frac >>= 1;
-        frac += even_end;
+        frac += round_to_even;
     }
     else if (exp == 1)
     {
@@ -41,7 +41,7 @@ float_bits float_half(float_bits f)
         exp = 0;
         unsigned M = (1 << 23) + frac;
         frac = M >> 1;
-        frac += even_end;
+        frac += round_to_even;
     }
     else // exp <= 0xFE
     {
