@@ -61,7 +61,6 @@ int main(int argc, char const *argv[])
     {
         printf("float_half(0x%.8X) = 0x%.8X\n", fb, float_half(fb));
         assert(float_half(fb) == f2fd(0.5 * fb2f(fb)));
-        printf("-------\n");
     }
 
     return 0;
