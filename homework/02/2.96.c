@@ -17,7 +17,7 @@ int float_f2i(float_bits f)
 
     if (exp < 127)
     {
-        /** 当 exp < 127 时， E < 0 , abs(f) < 1 ,res 等于初始化的 0 */
+        /** 当 exp < 127 时， E < 0 , abs(f) < 1 ,结果为 0 */
         return 0;
     }
 
