@@ -33,6 +33,7 @@ float_bits float_i2f(int i)
         E++;
     }
 
+    // 左移或者右移 M，使得 (1<<23) <= M < (1<<24)
     if (E <= 23) // float 可以精确表示 int
     {
         M <<= 23 - E;
@@ -51,7 +52,7 @@ float_bits float_i2f(int i)
         if (M == 1 << 24)
         {
             // M >>= E - 23 后，(1<<23) <= M < (1<<24)
-            // 但，M += round_to_even 有可能导致了 M 的最高位进一
+            // 但，M += round_to_even 有可能使得 M 的最高位进一
             // 导致 M == 1 << 24 ， 例如 i = INT_MAX 就会发生这种情况
             // 为了使得 (1<<23) <= M < (1<<24)
             M >>= 1;
