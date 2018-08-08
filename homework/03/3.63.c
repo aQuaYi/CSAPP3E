@@ -16,7 +16,7 @@ long switch_prob(long x, long n)
     case 65:
         x *= x;
     default:
-        result += x + 0x4B;
+        result = x + 0x4B;
         break;
     }
 
