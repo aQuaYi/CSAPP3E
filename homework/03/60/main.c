@@ -7,8 +7,7 @@ extern long loop_me(long x, int n);
 int main(int argc, char const *argv[])
 {
 
-  long x = 0xABCD4321;
-  printf("x =%8lX\n", x);
+  long x = 0xFFFFFFFF;
 
   for (int n = 1; n < 64; n++)
   {
