@@ -40,14 +40,15 @@ float_bits float_i2f(int i)
     }
     else // E > 23， 需要进行取舍
     {
-        unsigned trunc_mask = (unsigned)-1 >> (32 - (E - 23));
-        unsigned truncation = trunc_mask & M;
+        unsigned tail_length = E - 23;
+        unsigned tail_mask = (unsigned)-1 >> (32 - tail_length);
+        unsigned tail = tail_mask & M;
         // lsb = Least Significant Bit ， 最低有效位
-        unsigned lsb_is_one = (M >> (E - 23)) & 1;
-        unsigned half_lsb = 1 << (E - 23 - 1);
-        unsigned round_to_even = (lsb_is_one && truncation >= half_lsb) ||
-                                 (!lsb_is_one && truncation > half_lsb);
-        M >>= E - 23;
+        unsigned lsb_is_one = (M >> tail_length) & 1;
+        unsigned half_lsb = 1 << (tail_length - 1);
+        unsigned round_to_even = (lsb_is_one && tail >= half_lsb) ||
+                                 (!lsb_is_one && tail > half_lsb);
+        M >>= tail_length;
         M += round_to_even;
         if (M == 1 << 24)
         {
