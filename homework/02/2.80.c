@@ -10,11 +10,13 @@ int threefourths(int x)
     int fourth = x >> 2;
 
     // 正数不能整除 4 的时候， fourth++
-    int is_pos = ~x & INT_MIN;
+    int x_is_pos = (~x & INT_MIN) && (x != 0);
     int has_remainder = x & 3;
-    is_pos &&has_remainder && (fourth++);
+    x_is_pos &&has_remainder && (fourth++);
 
-    // 负数右移 2 位自带 -- 效果
+    // 负数右移 2 位自带 fourth-- 效果
+
+    // x = 0 时， x - forth = 0
 
     return x - fourth;
 }
