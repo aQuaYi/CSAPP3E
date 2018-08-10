@@ -10,7 +10,7 @@ int threefourths(int x)
     int fourth = x >> 2;
 
     // 正数不能整除 4 的时候， fourth++
-    int is_pos = -x & INT_MIN;
+    int is_pos = ~x & INT_MIN;
     int has_remainder = x & 3;
     is_pos &&has_remainder && (fourth++);
 
