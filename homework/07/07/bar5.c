@@ -1,4 +1,4 @@
-double x;
+static double x;
 
 void f()
 {
