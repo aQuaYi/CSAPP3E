@@ -1,5 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <csapp.h>
+
 
 
 void sigint_handler(int sig)
@@ -9,7 +11,7 @@ void sigint_handler(int sig)
 exit(0);
 }
 
-unsigned int  snooze(unsigned int secs);
+unsigned int  snooze(unsigned int secs)
 {
     unsigned int rs = sleep(secs);
     if (signal(SIGINT, sigint_handler)== SIG_ERR) {
